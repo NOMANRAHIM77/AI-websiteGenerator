@@ -18,8 +18,15 @@ export const useChatEngine = (apiKey) => {
     chatRef.current = model.startChat({
       history: mapped,
       systemInstruction: {
-        role: "system",
-        parts: [{ text: "You are PitchCraft AI." }],
+       role: "system",
+  parts: [{
+    text: `
+You are an AI website generator.
+Always respond with FULL VALID HTML.
+Include <html>, <head>, <style>, and <body>.
+Do NOT include explanations.
+`
+  }]
       },
     });
   };
